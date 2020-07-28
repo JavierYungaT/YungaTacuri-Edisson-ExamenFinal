@@ -15,7 +15,7 @@ public class CitasMedicas implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int codigo;
+	private int id;
 	private String signosVitales;
 	private String sintomas;
 	private String alergias;
@@ -43,12 +43,18 @@ public class CitasMedicas implements Serializable{
 		
 	}
 
-	public int getCodigo() {
-		return codigo;
+	
+
+	public int getId() {
+		return id;
 	}
 
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	public String getSignosVitales() {
@@ -107,11 +113,14 @@ public class CitasMedicas implements Serializable{
 		this.editable = editable;
 	}
 
+	
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + codigo;
+		result = prime * result + id;
 		return result;
 	}
 
@@ -124,17 +133,19 @@ public class CitasMedicas implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		CitasMedicas other = (CitasMedicas) obj;
-		if (codigo != other.codigo)
+		if (id != other.id)
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "CitasMedicas [codigo=" + codigo + ", signosVitales=" + signosVitales + ", sintomas=" + sintomas
-				+ ", alergias=" + alergias + ", enferPrevias=" + enferPrevias + ", fecha=" + fecha + ", paciente="
-				+ paciente + ", editable=" + editable + "]";
+		return "CitasMedicas [id=" + id + ", signosVitales=" + signosVitales + ", sintomas=" + sintomas + ", alergias="
+				+ alergias + ", enferPrevias=" + enferPrevias + ", fecha=" + fecha + ", paciente=" + paciente
+				+ ", editable=" + editable + "]";
 	}
+
+	
 	
 	
 	

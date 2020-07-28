@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<title>buscar</title>
+	
+	<style>
+.tabla {
+	border-collapse: collapse;
+}
+
+.cabeceraTabla {
+	text-align: center;
+	background: none repeat scroll 0 0 #E5E5E5;
+	border-bottom: 1px solid #BBBBBB;
+	padding: 8px;
+}
+
+.filaPar {
+	text-align: center;
+	background: none repeat scroll 0 0 #FFFFFFF;
+	border-top: 1px solid #BBBBBB;
+}
+
+.filaImpar {
+	text-align: center;
+	background: none repeat scroll 0 0 #F9F9F9;
+	border-top: 1px solid #BBBBBB;
+}
+</style>
+</h:head> 
+<body> 
+
+<div class="jumbotron top-space">
+		<div class="container">
+			<h3
+				style="text-align: center; border: 1px dotted #000; padding: 8px; width: 50%; border: 1px dotted #f00; padding: 8px; margin: auto;"
+				class="page-header">LISTA Y BUSCA PACIENTES</h3>
+			<br></br>
+
+			<h:form>
+				<h:dataTable value="#{citasMedicasBean.listCitas}" var="p"
+					styleClass="tabla" headerClass="cabeceraTabla"
+					rowClasses="filaImpar" class="table table-hover">
+					<h:column>
+						<f:facet name="header">Codigo</f:facet>#{p.id}
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Sintomas</f:facet>
+						<h:outputText value="#{p.sintomas}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Alergias</f:facet>
+						<h:outputText value="#{p.alergias}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Enfermedades Previas</f:facet>
+						<h:outputText value="#{p.enferPrevias}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Fecha</f:facet>
+						<h:outputText value="#{p.fecha}" />
+					</h:column>
+
+				</h:dataTable>
+
+				<td>SELECCIONAR PACIENTES<br></br> <h:selectOneMenu
+						value="#{citasMedicasBean.paciente}">
+						<f:selectItems value="#{pacienteBean.listaPaciente}" />
+					</h:selectOneMenu>
+				</td>
+				<br></br>
+				<h:commandButton value="Buscar"
+					action="#{citasMedicasBean.buscarCitasnombre()}"
+					class="btn btn-danger btn block" />
+			</h:form>
+		</div>
+	</div>
+
+</body> 
+</html>

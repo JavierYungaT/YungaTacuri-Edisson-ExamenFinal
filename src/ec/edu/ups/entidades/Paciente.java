@@ -17,14 +17,14 @@ public class Paciente implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int codigo;
+	private int id;
 	private String cedula;
 	private String nombre;
 	private String apellido;
 	private String telefono;
 	private String direccion;
 	private String correo;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "citaMedica")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "paciente")
 	private List<CitasMedicas> citas;
 	
 	@Transient
@@ -45,12 +45,14 @@ public class Paciente implements Serializable{
 		
 	}
 
-	public int getCodigo() {
-		return codigo;
+	
+
+	public int getId() {
+		return id;
 	}
 
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getCedula() {
@@ -117,11 +119,13 @@ public class Paciente implements Serializable{
 		this.editable = editable;
 	}
 
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + codigo;
+		result = prime * result + id;
 		return result;
 	}
 
@@ -134,17 +138,17 @@ public class Paciente implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Paciente other = (Paciente) obj;
-		if (codigo != other.codigo)
+		if (id != other.id)
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Paciente [codigo=" + codigo + ", cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido
-				+ ", telefono=" + telefono + ", direccion=" + direccion + ", correo=" + correo + ", citas=" + citas
-				+ ", editable=" + editable + "]";
+		return nombre;
 	}
+
+	
 	
 	
 	
